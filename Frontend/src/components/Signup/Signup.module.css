@@ -1,0 +1,9 @@
+.bgCustomBackground {
+  background-color: rgb(127, 127, 127);
+}
+.textColor{
+  color: rgb(115, 121, 134);
+}
+.inputBorder {
+  border: 1px solid rgb(147, 151, 157);
+}
