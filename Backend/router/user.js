@@ -30,7 +30,7 @@ const putSchema = zod.object({
 userRouter.post("/signup", async (req, res) => {
   const { username, password } = req.body;
   const hashedPassword = await bcrypt.hash(password, 10);
-  console.log("hashed Pasword", hashedPassword);
+  // console.log("hashed Pasword", hashedPassword);
   const success = signupSchema.safeParse(req.body);
   if (!success) {
     return res.json({
@@ -73,7 +73,7 @@ userRouter.post("/signup", async (req, res) => {
 userRouter.post("/signin", async (req, res) => {
   try {
     const { username, password } = req.body;
-    console.log(`Username:${username} , Password:${password}`);
+    // console.log(`Username:${username} , Password:${password}`);
     const success = signinSchema.safeParse(req.body);
     if (!success) {
       return res.status(404).json({
@@ -82,16 +82,16 @@ userRouter.post("/signin", async (req, res) => {
     }
 
     const user = await User.findOne({ username });
-    console.log("User:-", user);
+    // console.log("User:-", user);
     if (!user) {
       return res.status(404).json({
         msg: "Invalid Username",
       });
     }
-    console.log("User Password", user.password);
+    // console.log("User Password", user.password);
 
     const passwordMatch = await bcrypt.compare(password, user.password);
-    console.log("Password Match:", passwordMatch);
+    // console.log("Password Match:", passwordMatch);
     if (!passwordMatch) {
       return res.status(401).json({
         msg: "Invalid password",
@@ -99,7 +99,7 @@ userRouter.post("/signin", async (req, res) => {
     }
 
     const token = jwt.sign({ userId: user._id }, JWT_SECRET);
-    console.log("token:- ", token);
+    // console.log("token:- ", token);
     res.json({
       msg: "Signin Successfull",
       user,
@@ -108,7 +108,6 @@ userRouter.post("/signin", async (req, res) => {
   } catch (error) {
     res.status(404).json({
       msg: `Some error has been occured ${error}`,
-   
     });
   }
 });
@@ -133,7 +132,6 @@ userRouter.put("/update", authMiddleware, async (req, res) => {
     msg: "Updated Successfully",
   });
 });
-
 
 //Al other users
 userRouter.get("/all_User", authMiddleware, async (req, res) => {
