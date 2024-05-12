@@ -5,7 +5,6 @@ import { Form, Link } from "react-router-dom";
 
 export default function Signin() {
   const [formData, setFromData] = useState({ username: "", password: "" });
-  //   console.log("formData", formData);
 
   const changeHandler = useCallback((e) => {
     const { name, value } = e.target;

@@ -1,6 +1,5 @@
 import React from "react";
 import { Form, Link } from "react-router-dom";
-// import "./Signup.css";
 import style from "./Signup.module.css";
 export default function Signup() {
   return (
@@ -45,7 +44,6 @@ export default function Signup() {
             name="firstname"
             required
             placeholder="john"
-            // className="text-color style.inputBorder rounded-lg py-2 px-3 text-lg w-full"
             className={`rounded-lg py-2 px-3 text-lg w-full ${style.textColor} ${style.inputBorder}`}
           />
 
